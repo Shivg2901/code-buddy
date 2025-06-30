@@ -1,26 +1,25 @@
-
 import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, Mail, Lock, Code, ArrowRight, Loader, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { Outlet } from 'react-router-dom';
 import { login, register } from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
 
-// CodeMetrics Logo Component
-const CodeMetricsLogo = () => (
+// CodeTrack Logo Component
+const CodeTrackLogo = () => (
   <div className="flex items-center">
     <div className="relative h-16 w-20">
       {/* Center logo image */}
       <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 flex justify-center">
         <img
           src="/logo2.png" // Make sure this exists in the public folder
-          alt="Codemetrics Logo"
-          className="h-12 object-contain" // Increased from h-8 to h-12
+          alt="CodeTrack Logo"
+          className="h-12 object-contain"
         />
       </div>
     </div>
 
     <span className="font-extrabold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-400">
-      CodeMetrics
+      CodeTrack
     </span>
   </div>
 );
@@ -36,7 +35,6 @@ export default function AuthPages() {
   const [notification, setNotification] = useState({ show: false, message: '', type: '' });
   const navigate = useNavigate();
 
-  // Clear notification after 5 seconds
   useEffect(() => {
     if (notification.show) {
       const timer = setTimeout(() => {
@@ -97,7 +95,7 @@ export default function AuthPages() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 text-gray-200 p-4">
       <Outlet />
-      
+
       {/* Notification */}
       {notification.show && (
         <div 
@@ -119,12 +117,12 @@ export default function AuthPages() {
           </button>
         </div>
       )}
-      
-      {/* Logo and Header - Replaced with CodeMetricsLogo */}
+
+      {/* Logo and Header */}
       <div className="mb-6">
-        <CodeMetricsLogo />
+        <CodeTrackLogo />
       </div>
-      
+
       {/* Auth Container */}
       <div className="w-full max-w-md bg-black/30 backdrop-blur-lg rounded-lg shadow-lg overflow-hidden border border-gray-700/50">
         {/* Tabs */}
@@ -148,13 +146,13 @@ export default function AuthPages() {
             Register
           </button>
         </div>
-        
+
         {/* Form */}
         <div className="p-6">
           <h2 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300">
             {isLogin ? 'Welcome back!' : 'Create an account'}
           </h2>
-          
+
           {/* Error Message */}
           {error && (
             <div className="mb-4 p-3 bg-red-900/50 border border-red-500 text-red-200 rounded-md text-sm flex items-start animate-in fade-in duration-300">
@@ -168,9 +166,8 @@ export default function AuthPages() {
               </button>
             </div>
           )}
-          
+
           <form onSubmit={handleSubmit}>
-            {/* Name Field (Register only) */}
             {!isLogin && (
               <div className="mb-4 transition-opacity duration-300" style={{ opacity: loading ? 0.6 : 1 }}>
                 <label htmlFor="name" className="block text-sm font-medium mb-1 text-gray-300">
@@ -190,8 +187,8 @@ export default function AuthPages() {
                 </div>
               </div>
             )}
-            
-            {/* Email Field */}
+
+            {/* Email */}
             <div className="mb-4 transition-opacity duration-300" style={{ opacity: loading ? 0.6 : 1 }}>
               <label htmlFor="email" className="block text-sm font-medium mb-1 text-gray-300">
                 Email Address
@@ -210,8 +207,8 @@ export default function AuthPages() {
                 />
               </div>
             </div>
-            
-            {/* Password Field */}
+
+            {/* Password */}
             <div className="mb-6 transition-opacity duration-300" style={{ opacity: loading ? 0.6 : 1 }}>
               <label htmlFor="password" className="block text-sm font-medium mb-1 text-gray-300">
                 Password
@@ -242,8 +239,8 @@ export default function AuthPages() {
                 </button>
               </div>
             </div>
-            
-            {/* Login/Register Button */}
+
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}
@@ -267,8 +264,8 @@ export default function AuthPages() {
               )}
             </button>
           </form>
-          
-          {/* Forgot Password (Login only) */}
+
+          {/* Forgot Password */}
           {isLogin && (
             <div className="mt-4 text-center">
               <a href="#" className={`text-sm text-blue-400 hover:text-blue-300 transition duration-150 ${loading ? 'pointer-events-none opacity-50' : ''}`}>
@@ -276,8 +273,8 @@ export default function AuthPages() {
               </a>
             </div>
           )}
-          
-          {/* Switch between login/register */}
+
+          {/* Switch Mode */}
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-400">
               {isLogin ? "Don't have an account?" : "Already have an account?"}
@@ -292,10 +289,10 @@ export default function AuthPages() {
           </div>
         </div>
       </div>
-      
+
       {/* Footer */}
       <div className="mt-8 text-sm text-gray-400">
-        <p>© 2025 CodeMetrics. All rights reserved.</p>
+        <p>© 2025 CodeTrack. All rights reserved.</p>
       </div>
     </div>
   );
