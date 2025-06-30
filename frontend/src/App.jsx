@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import AuthPages from "./pages/authpage";
+import UserDetailsPage from "./pages/codeforces_profile";
 
 
 function App() {
